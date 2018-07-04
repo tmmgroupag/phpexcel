@@ -1344,7 +1344,7 @@ class Excel5 extends BaseReader implements IReader
                 case 0x1E: // null-terminated string prepended by dword string length
                     $byteLength = self::getInt4d($this->summaryInformation, $secOffset + 4 + $offset);
                     $value = substr($this->summaryInformation, $secOffset + 8 + $offset, $byteLength);
-                    $value = \PHPExcel\Shared\String::ConvertEncoding($value, 'UTF-8', $codePage);
+                    $value = \PHPExcel\Shared\StringClass::ConvertEncoding($value, 'UTF-8', $codePage);
                     $value = rtrim($value);
                     break;
                 case 0x40: // Filetime (64-bit value representing the number of 100-nanosecond intervals since January 1, 1601)
@@ -1490,7 +1490,7 @@ class Excel5 extends BaseReader implements IReader
                 case 0x1E:    //    null-terminated string prepended by dword string length
                     $byteLength = self::getInt4d($this->documentSummaryInformation, $secOffset + 4 + $offset);
                     $value = substr($this->documentSummaryInformation, $secOffset + 8 + $offset, $byteLength);
-                    $value = \PHPExcel\Shared\String::ConvertEncoding($value, 'UTF-8', $codePage);
+                    $value = \PHPExcel\Shared\StringClass::ConvertEncoding($value, 'UTF-8', $codePage);
                     $value = rtrim($value);
                     break;
                 case 0x40:    //    Filetime (64-bit value representing the number of 100-nanosecond intervals since January 1, 1601)
@@ -3689,13 +3689,13 @@ class Excel5 extends BaseReader implements IReader
                 $sstCount = count($this->sst[$index]['fmtRuns']);
                 for ($i = 0; $i <= $sstCount; ++$i) {
                     if (isset($fmtRuns[$i])) {
-                        $text = \PHPExcel\Shared\String::Substring($this->sst[$index]['value'], $charPos, $fmtRuns[$i]['charPos'] - $charPos);
+                        $text = \PHPExcel\Shared\StringClass::Substring($this->sst[$index]['value'], $charPos, $fmtRuns[$i]['charPos'] - $charPos);
                         $charPos = $fmtRuns[$i]['charPos'];
                     } else {
-                        $text = \PHPExcel\Shared\String::Substring($this->sst[$index]['value'], $charPos, \PHPExcel\Shared\String::CountCharacters($this->sst[$index]['value']));
+                        $text = \PHPExcel\Shared\StringClass::Substring($this->sst[$index]['value'], $charPos, \PHPExcel\Shared\StringClass::CountCharacters($this->sst[$index]['value']));
                     }
 
-                    if (\PHPExcel\Shared\String::CountCharacters($text) > 0) {
+                    if (\PHPExcel\Shared\StringClass::CountCharacters($text) > 0) {
                         if ($i == 0) { // first text run, no style
                             $richText->createText($text);
                         } else {
@@ -7504,7 +7504,7 @@ class Excel5 extends BaseReader implements IReader
             $string = self::uncompressByteString($string);
         }
 
-        return \PHPExcel\Shared\String::ConvertEncoding($string, 'UTF-8', 'UTF-16LE');
+        return \PHPExcel\Shared\StringClass::ConvertEncoding($string, 'UTF-8', 'UTF-16LE');
     }
 
 
@@ -7534,7 +7534,7 @@ class Excel5 extends BaseReader implements IReader
      */
     private function decodeCodepage($string)
     {
-        return \PHPExcel\Shared\String::ConvertEncoding($string, 'UTF-8', $this->codepage);
+        return \PHPExcel\Shared\StringClass::ConvertEncoding($string, 'UTF-8', $this->codepage);
     }
 
 

@@ -3,7 +3,7 @@
 namespace PHPExcel\Shared;
 
 /**
- * \PHPExcel\Shared\String
+ * \PHPExcel\Shared\StringClass
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -26,8 +26,13 @@ namespace PHPExcel\Shared;
  * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  * @version    ##VERSION##, ##DATE##
+ *
+ *
+ *
+ * String zu StringClass umbenannt um PHPExcel zu PHP7 kompatibel zu machen. String ist ein reservierter Name.
+ * Siehe: http://php.net/manual/de/reserved.other-reserved-words.php
  */
-class String
+class StringClass
 {
     /**    Constants                */
     /**    Regular Expressions        */

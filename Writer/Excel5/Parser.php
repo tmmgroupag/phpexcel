@@ -595,7 +595,7 @@ class Parser
             throw new \PHPExcel\Writer\Exception("String is too long");
         }
 
-        return pack('C', $this->ptg['ptgStr']) . \PHPExcel\Shared\String::UTF8toBIFF8UnicodeShort($string);
+        return pack('C', $this->ptg['ptgStr']) . \PHPExcel\Shared\StringClass::UTF8toBIFF8UnicodeShort($string);
     }
 
     /**

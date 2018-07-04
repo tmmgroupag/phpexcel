@@ -238,8 +238,8 @@ class TextData
                 $haystack = ($haystack) ? \PHPExcel\Calculation::getTRUE() : \PHPExcel\Calculation::getFALSE();
             }
 
-            if (($offset > 0) && (\PHPExcel\Shared\String::CountCharacters($haystack) > $offset)) {
-                if (\PHPExcel\Shared\String::CountCharacters($needle) == 0) {
+            if (($offset > 0) && (\PHPExcel\Shared\StringClass::CountCharacters($haystack) > $offset)) {
+                if (\PHPExcel\Shared\StringClass::CountCharacters($needle) == 0) {
                     return $offset;
                 }
                 if (function_exists('mb_strpos')) {
@@ -275,8 +275,8 @@ class TextData
                 $haystack = ($haystack) ? \PHPExcel\Calculation::getTRUE() : \PHPExcel\Calculation::getFALSE();
             }
 
-            if (($offset > 0) && (\PHPExcel\Shared\String::CountCharacters($haystack) > $offset)) {
-                if (\PHPExcel\Shared\String::CountCharacters($needle) == 0) {
+            if (($offset > 0) && (\PHPExcel\Shared\StringClass::CountCharacters($haystack) > $offset)) {
+                if (\PHPExcel\Shared\StringClass::CountCharacters($needle) == 0) {
                     return $offset;
                 }
                 if (function_exists('mb_stripos')) {
@@ -449,7 +449,7 @@ class TextData
             $mixedCaseString = ($mixedCaseString) ? \PHPExcel\Calculation::getTRUE() : \PHPExcel\Calculation::getFALSE();
         }
 
-        return \PHPExcel\Shared\String::StrToLower($mixedCaseString);
+        return \PHPExcel\Shared\StringClass::StrToLower($mixedCaseString);
     }
 
 
@@ -469,7 +469,7 @@ class TextData
             $mixedCaseString = ($mixedCaseString) ? \PHPExcel\Calculation::getTRUE() : \PHPExcel\Calculation::getFALSE();
         }
 
-        return \PHPExcel\Shared\String::StrToUpper($mixedCaseString);
+        return \PHPExcel\Shared\StringClass::StrToUpper($mixedCaseString);
     }
 
 
@@ -489,7 +489,7 @@ class TextData
             $mixedCaseString = ($mixedCaseString) ? \PHPExcel\Calculation::getTRUE() : \PHPExcel\Calculation::getFALSE();
         }
 
-        return \PHPExcel\Shared\String::StrToTitle($mixedCaseString);
+        return \PHPExcel\Shared\StringClass::StrToTitle($mixedCaseString);
     }
 
 
@@ -612,9 +612,9 @@ class TextData
 
         if (!is_numeric($value)) {
             $numberValue = str_replace(
-                \PHPExcel\Shared\String::getThousandsSeparator(),
+                \PHPExcel\Shared\StringClass::getThousandsSeparator(),
                 '',
-                trim($value, " \t\n\r\0\x0B" . \PHPExcel\Shared\String::getCurrencyCode())
+                trim($value, " \t\n\r\0\x0B" . \PHPExcel\Shared\StringClass::getCurrencyCode())
             );
             if (is_numeric($numberValue)) {
                 return (float) $numberValue;

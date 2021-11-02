@@ -1,0 +1,16 @@
+{
+    "name": "phpoffice/phpexcel",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Denis Zunke",
+            "email": "denis.zunke@tmm-group.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "PHPExcel\\": "src/"
+        }
+    },
+    "require": {}
+}

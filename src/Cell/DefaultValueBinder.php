@@ -72,7 +72,7 @@ class DefaultValueBinder implements IValueBinder
             return DataType::TYPE_STRING;
         } elseif ($pValue instanceof \PHPExcel\RichText) {
             return DataType::TYPE_INLINE;
-        } elseif ($pValue{0} === '=' && strlen($pValue) > 1) {
+        } elseif ($pValue[0] === '=' && strlen($pValue) > 1) {
             return DataType::TYPE_FORMULA;
         } elseif (is_bool($pValue)) {
             return DataType::TYPE_BOOL;
@@ -80,7 +80,7 @@ class DefaultValueBinder implements IValueBinder
             return DataType::TYPE_NUMERIC;
         } elseif (preg_match('/^[\+\-]?([0-9]+\\.?[0-9]*|[0-9]*\\.?[0-9]+)([Ee][\-\+]?[0-2]?\d{1,3})?$/', $pValue)) {
             $tValue = ltrim($pValue, '+-');
-            if (is_string($pValue) && $tValue{0} === '0' && strlen($tValue) > 1 && $tValue{1} !== '.') {
+            if (is_string($pValue) && $tValue[0] === '0' && strlen($tValue) > 1 && $tValue[1] !== '.') {
                 return DataType::TYPE_STRING;
             } elseif ((strpos($pValue, '.') === false) && ($pValue > PHP_INT_MAX)) {
                 return DataType::TYPE_STRING;
